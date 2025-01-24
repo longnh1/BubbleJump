@@ -41,10 +41,10 @@ public class BubbleSpawner : MonoBehaviour
 	{
 		// spawn bubbles if mouse button is pressed
 		if (Input.GetMouseButtonDown(0)){
-			Debug.Log("Pressed left-click.");
+			//Debug.Log("Pressed left-click.");
 			GameObject bubble = GetPooledObject();
 			if (bubble!=null){
-				Debug.Log("spawned Bubble");
+				//Debug.Log("spawned Bubble");
 				bubble.transform.position=transform.position;
 				Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				mousePos.z=10;
