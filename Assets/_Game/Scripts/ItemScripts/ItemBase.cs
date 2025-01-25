@@ -13,6 +13,7 @@ public class ItemBase : MonoBehaviour
 		followingPlayer=True;
 	}*/
 
+	//Inside the bubble
 	public virtual void Bubblify(){
 		bubbled=true;
 		GetComponent<Rigidbody2D>().simulated=false;

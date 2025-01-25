@@ -9,7 +9,9 @@ public class StaticItem : ItemBase
 		if (other.CompareTag(Constant.BUBBLE_TAG)){
 			Bubblify();
 			other.gameObject.GetComponent<BubbleScript>().DeactiveBubble();
-		}else if(other.CompareTag(Constant.PLAYER_TAG)){
+
+		}
+		else if(other.CompareTag(Constant.PLAYER_TAG)){
 			//collect
 		}
 	}
