@@ -100,9 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 0.1
+  speed: 5
   targetSize: 1
   targetPosition: {x: 0, y: 0, z: 0}
-  speed: 5
+  bubbleLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!58 &-2905661151989430053
 CircleCollider2D:
   m_ObjectHideFlags: 0

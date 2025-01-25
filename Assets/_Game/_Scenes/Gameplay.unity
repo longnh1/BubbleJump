@@ -122,6 +122,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &100541306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 100541307}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &100541307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100541306}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3499999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 359180694}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &144746966
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +351,7 @@ Transform:
   m_Children:
   - {fileID: 1250747563}
   - {fileID: 1261593013}
+  - {fileID: 100541307}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &359180695
@@ -424,7 +456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &495828514
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -504,6 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dbf015ccfd8b045a21400eebe3b500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inExplosionRadius: []
   explosionForceMulti: 300
   explosionRadius: 3
 --- !u!70 &495828517
@@ -919,10 +952,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e2f4cf8ed557c9597971833c74842e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 359180694}
+  player: {fileID: 100541307}
   bubblePrefab: {fileID: 4355581047158676629, guid: 4777e7c80d5db4bd6b644131fba5e2c8, type: 3}
   pooledBubbles: []
-  poolSize: 100
+  poolSize: 10
 --- !u!4 &1176856579
 Transform:
   m_ObjectHideFlags: 0

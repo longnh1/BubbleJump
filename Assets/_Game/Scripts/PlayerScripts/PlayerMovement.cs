@@ -27,7 +27,10 @@ public class PlayerMovement : MonoBehaviour
     private float playerHeight = 0.8f;
 
     private float jumpTimer = 0;
+    private float moveTimer = 0;
+
     private const float JUMP_DELAY = 0.1f;
+    private const float MOVE_DELAY = 0.35f;
 
     #endregion
 
@@ -44,8 +47,22 @@ public class PlayerMovement : MonoBehaviour
 
         IsTouchedBubble();
 
-        if (!IsExploded) 
-            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
+        if (IsExploded)
+        {
+            moveTimer -= Time.deltaTime;
+            if (moveTimer <= 0) {
+                //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
+
+                rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y), 10* Time.deltaTime);
+            }
+        } 
+        else
+        {
+            //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
+            rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y), 10 * Time.deltaTime);
+        }
+
+
 
         //Flip player sprite
         //if (IsMoving) playerSprite.flipX = moveDir.x < 0;
@@ -76,7 +93,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Touched bubble");
             IsExploded = true;
-            BubbleTest bb = raycastHit2D.transform.GetComponent<BubbleTest>();
+            moveTimer = MOVE_DELAY;
+
+            BubbleScript bb = raycastHit2D.transform.GetComponent<BubbleScript>();
             if (bb != null) {
                 Debug.Log("Bubble exploded");
                 bb.Explode(); 

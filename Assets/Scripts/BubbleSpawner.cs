@@ -59,7 +59,7 @@ public class BubbleSpawner : MonoBehaviour
 			RaycastHit2D hit = Physics2D.Raycast(player.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)-player.position);
 			GameObject oth=hit.collider.gameObject;
 			if (oth.CompareTag("bubble")){
-				oth.GetComponent<BubbleScript>().pop();
+				oth.GetComponent<BubbleScript>().Pop();
 			}
 		}
 	}
