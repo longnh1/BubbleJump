@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour
 {
-    public Sprite itemSprite;
-    public LayerMask interactLayer;
+	public Sprite itemSprite;
+	public LayerMask interactLayer;
+	public bool bubbled;
+	public bool followingPlayer;
 
-    public virtual void StartFollowingPlayer(){
+	/*public virtual void StartFollowingPlayer(){
+		followingPlayer=True;
+	}*/
 
-    }
-
-    public virtual void Bubblify(){
-
-    }
-    
-    public virtual void Pop(){
-    	
-    }
+	public virtual void Bubblify(){
+		bubbled=true;
+		GetComponent<Rigidbody2D>().simulated=false;
+		GetComponent<Collider2D>().isTrigger=true;
+	}
+	
+	public virtual void Pop(){
+		bubbled=false;
+		followingPlayer=false;
+		GetComponent<Rigidbody2D>().simulated=true;
+		GetComponent<Collider2D>().isTrigger=false;
+	}
 }
