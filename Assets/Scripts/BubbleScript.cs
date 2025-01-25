@@ -62,7 +62,10 @@ public class BubbleScript : MonoBehaviour
 					targetSize = targetSize+othBub.targetSize;
 					size=size>othBub.size?size:othBub.size;
 					othBub.DeactiveBubble();
-                }
+                		}else{
+                		if (oth.CompareTag(Constant.GROUND_TAG)){
+                			Pop();
+                		}}
 			}
 		}
 

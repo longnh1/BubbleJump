@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Constant
 {
-    public static string BUBBLE_TAG = "bubble";
-
+	public static string BUBBLE_TAG = "bubble";
+	public static string GROUND_TAG = "ground";
 }

@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 144746969}
   m_Layer: 6
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536,9 +536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dbf015ccfd8b045a21400eebe3b500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inExplosionRadius: []
-  explosionForceMulti: 300
-  explosionRadius: 3
 --- !u!70 &495828517
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -806,7 +803,7 @@ GameObject:
   - component: {fileID: 1011042777}
   m_Layer: 6
   m_Name: Platform (1)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1198,7 +1195,7 @@ GameObject:
   - component: {fileID: 1603616092}
   m_Layer: 6
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
