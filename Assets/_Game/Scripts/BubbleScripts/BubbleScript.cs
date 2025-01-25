@@ -15,7 +15,7 @@ public class BubbleScript : MonoBehaviour
 	public float targetSize = 1;
     public Vector3 targetPosition;
 
-	[SerializeField] private LayerMask bubbleLayer;
+	[SerializeField] private LayerMask collidedLayer;
 
 	private Collider2D selfCollider;
 
@@ -45,14 +45,14 @@ public class BubbleScript : MonoBehaviour
     void FixedUpdate(){
 		
 		// checks collisions
-		RaycastHit2D[] cols = Physics2D.CircleCastAll(transform.position, size/2, Vector2.zero, 0, bubbleLayer);
+		RaycastHit2D[] cols = Physics2D.CircleCastAll(transform.position, size/2, Vector2.zero, 0, collidedLayer);
 		foreach (RaycastHit2D col in cols){
 			if (col.collider != selfCollider){
-				GameObject oth=col.collider.gameObject;
-				Debug.Log(oth.name);
+				GameObject oth = col.collider.gameObject;
 
 				// if we collide with another bubble, fuse parameters and deactivate the other bubble
-				if (oth.CompareTag(Constant.BUBBLE_TAG)){
+				if (oth.CompareTag(Constant.BUBBLE_TAG))
+                {
 					BubbleScript othBub = oth.GetComponent<BubbleScript>();
 					// position average
 					transform.position = (transform.position+oth.transform.position)/2;
@@ -62,10 +62,13 @@ public class BubbleScript : MonoBehaviour
 					targetSize = targetSize+othBub.targetSize;
 					size=size>othBub.size?size:othBub.size;
 					othBub.DeactiveBubble();
-                		}else{
-                		if (oth.CompareTag(Constant.GROUND_TAG)){
-                			Pop();
-                		}}
+                }
+                else
+                {
+                    if (oth.CompareTag(Constant.GROUND_TAG)){
+                	    Pop();
+                    }
+                }
 			}
 		}
 
