@@ -121,7 +121,7 @@ public class BubbleScript : MonoBehaviour
         Pop();
     }
 
-    private void DeactiveBubble()
+    public void DeactiveBubble()
     {
         size = 0.1f;
         targetSize = 1.0f;
