@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed = 3f;
 
     [SerializeField] private LayerMask collidedLayer;
+    [SerializeField] private LayerMask bubbleLayer;
+
+    public bool IsExploded { get; set; }
 
     #endregion
 
@@ -38,7 +41,11 @@ public class PlayerMovement : MonoBehaviour
         //Vector3 moveDir = new Vector3(inputVector.x, 0, 0);
 
         //rb.velocity = new Vector2(inputVector.x * moveSpeed, rb.velocity.y);
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
+
+        IsTouchedBubble();
+
+        if (!IsExploded) 
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
 
         //Flip player sprite
         //if (IsMoving) playerSprite.flipX = moveDir.x < 0;
@@ -46,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded()) 
         {
             jumpTimer -= Time.deltaTime;
-
+            IsExploded = false;
             if (jumpTimer <= 0 && GameInput.Instance.GetJumpKey())
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
@@ -60,6 +67,27 @@ public class PlayerMovement : MonoBehaviour
 
     #region Private Methods
 
+    private void IsTouchedBubble()
+    {
+        RaycastHit2D raycastHit2D = Physics2D.CapsuleCast(transform.position, new Vector2(.5f, 1f),
+            CapsuleDirection2D.Vertical, 0, Vector2.zero, 0.0f, bubbleLayer);
+
+        if (raycastHit2D.collider != null)
+        {
+            Debug.Log("Touched bubble");
+            IsExploded = true;
+            BubbleTest bb = raycastHit2D.transform.GetComponent<BubbleTest>();
+            if (bb != null) {
+                Debug.Log("Bubble exploded");
+                bb.Explode(); 
+            }
+        }
+        else
+        {
+            Debug.Log("Not touched");
+        }
+    }
+
     private bool IsGrounded()
     {
         RaycastHit2D raycastHit2D = Physics2D.BoxCast(groundedBoxCol.bounds.center, 
@@ -68,4 +96,5 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #endregion
+
 }
