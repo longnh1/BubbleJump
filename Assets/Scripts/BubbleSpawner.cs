@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BubbleSpawner : MonoBehaviour
 {
+	public Transform player;
 	public GameObject bubblePrefab;
 	public static BubbleSpawner BubbleBath;
 	public List<GameObject> pooledBubbles;
@@ -19,7 +20,7 @@ public class BubbleSpawner : MonoBehaviour
 		pooledBubbles = new List<GameObject>();
 		GameObject tmp;
 		for(int i=0; i<poolSize; i++){
-			tmp=Instantiate(bubblePrefab, transform);
+			tmp=Instantiate(bubblePrefab, player.position, Quaternion.identity, transform);
 			tmp.SetActive(false);
 			pooledBubbles.Add(tmp);
 		}
@@ -45,7 +46,7 @@ public class BubbleSpawner : MonoBehaviour
 			GameObject bubble = GetPooledObject();
 			if (bubble!=null){
 				//Debug.Log("spawned Bubble");
-				bubble.transform.position=transform.position;
+				bubble.transform.position=player.position;
 				Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				mousePos.z=10;
 				bubble.GetComponent<BubbleScript>().targetPosition=mousePos;
@@ -55,7 +56,7 @@ public class BubbleSpawner : MonoBehaviour
 		
 		// shoot the bubbles if mouse right click
 		if (Input.GetMouseButtonDown(1)){
-			RaycastHit2D hit = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position);
+			RaycastHit2D hit = Physics2D.Raycast(player.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)-player.position);
 			GameObject oth=hit.collider.gameObject;
 			if (oth.CompareTag("bubble")){
 				oth.GetComponent<BubbleScript>().pop();
