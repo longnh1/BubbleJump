@@ -102,18 +102,9 @@ public enum Events
 {
 	//Event for game stage
 	START_GAME,
-	UPDATE_STAGE,
+	CHECK_WIN_CONDITION,
 	WIN_GAME,
 	LOSE_GAME,
 
-	//Event for powerup
-	GET_SHIELD,
-	GET_RUSH,
 
-	//Event for chest
-	TRIGGER_CHEST,
-
-	//Event for boss
-	BOSS_HIT,
-	BOSS_SHOW_UP,
 }
