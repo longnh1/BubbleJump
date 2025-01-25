@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct ShockWave{
+	public Vector3 origin;
+	public float size;
+}
+
 public class BubbleScript : MonoBehaviour
 {
 	public float size = 0.1f;
@@ -53,5 +58,23 @@ public class BubbleScript : MonoBehaviour
 		}
 		// make the scale visible
 		transform.localScale=new Vector3(size,size,size);
+	}
+	
+	public void pop(){
+		Debug.Log("Popped!");
+		ShockWave sw;
+		sw.origin=transform.position;
+		sw.size=size;
+		transform.parent.gameObject.BroadcastMessage("applyShockWave", sw );
+		size=0.1f;
+		targetSize=1.0f;
+		gameObject.SetActive(false);
+	}
+	
+	public void applyShockWave(ShockWave sw){
+		float dist = Vector3.Distance(targetPosition,sw.origin);
+		Vector3 dir = (targetPosition-sw.origin);
+		dir.Normalize();
+		targetPosition += dir*(1.0f/dist)*(sw.size*sw.size);
 	}
 }

@@ -8,7 +8,6 @@ public class BubbleSpawner : MonoBehaviour
 	public static BubbleSpawner BubbleBath;
 	public List<GameObject> pooledBubbles;
 	public int poolSize;
-
 	void Awake(){
 		//set this script as a bubble pool
 		BubbleBath = this;
@@ -20,7 +19,7 @@ public class BubbleSpawner : MonoBehaviour
 		pooledBubbles = new List<GameObject>();
 		GameObject tmp;
 		for(int i=0; i<poolSize; i++){
-			tmp=Instantiate(bubblePrefab);
+			tmp=Instantiate(bubblePrefab, transform);
 			tmp.SetActive(false);
 			pooledBubbles.Add(tmp);
 		}
@@ -51,6 +50,15 @@ public class BubbleSpawner : MonoBehaviour
 				mousePos.z=10;
 				bubble.GetComponent<BubbleScript>().targetPosition=mousePos;
 				bubble.SetActive(true);
+			}
+		}
+		
+		// shoot the bubbles if mouse right click
+		if (Input.GetMouseButtonDown(1)){
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position);
+			GameObject oth=hit.collider.gameObject;
+			if (oth.CompareTag("bubble")){
+				oth.GetComponent<BubbleScript>().pop();
 			}
 		}
 	}
