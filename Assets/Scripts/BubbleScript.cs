@@ -24,15 +24,21 @@ public class BubbleScript : MonoBehaviour
 		transform.position=transform.position+(diff*coef);
 		
 		// checks collisions
-		List<RaycastHit2D> collisions = new List<RaycastHit2D>();
-		int col = Physics2D.CircleCast(new Vector2(transform.position.x, transform.position.y), size/2, new Vector2(0,0), new ContactFilter2D().NoFilter(), collisions);
-		if (col>1){
-			Debug.Log(col);
-			for (int i=0; i<col; i++){
-				if ((collisions[i]!=selfCollider)){
-					Debug.Log("blop");
+		RaycastHit2D[] cols = Physics2D.CircleCastAll(transform.position, size/2, Vector2.zero);
+		foreach (RaycastHit2D col in cols){
+			if (col.collider!=selfCollider){
+				GameObject oth=col.collider.gameObject;
+				Debug.Log(oth.name);
+				if (oth.CompareTag("bubble")){
+					BubbleScript othBub = oth.GetComponent<BubbleScript>();
+					transform.position=(transform.position+oth.transform.position)/2;
+					targetPosition=(targetPosition+othBub.targetPosition)/2;
+					size = size+othBub.size;
+					othBub.size=1;
+					oth.SetActive(false);
 				}
 			}
 		}
+		transform.localScale=new Vector3(size,size,size);
 	}
 }
