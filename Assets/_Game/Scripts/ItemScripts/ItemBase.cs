@@ -25,5 +25,9 @@ public class ItemBase : MonoBehaviour
 		followingPlayer=false;
 		GetComponent<Rigidbody2D>().simulated=true;
 		GetComponent<Collider2D>().isTrigger=false;
+		transform.parent=null;
+		transform.localScale=new Vector3(0.5f,0.5f,0.5f);
 	}
+	
+	
 }
