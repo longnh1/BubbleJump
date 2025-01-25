@@ -7,13 +7,15 @@ public class ItemBase : MonoBehaviour
     public Sprite itemSprite;
     public LayerMask interactLayer;
 
-    public virtual void Interact()
-    {
+    public virtual void StartFollowingPlayer(){
 
     }
 
-    public virtual void Collected()
-    {
+    public virtual void Bubblify(){
 
+    }
+    
+    public virtual void Pop(){
+    	
     }
 }
