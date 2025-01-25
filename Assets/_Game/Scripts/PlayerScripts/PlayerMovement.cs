@@ -91,19 +91,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (raycastHit2D.collider != null)
         {
-            Debug.Log("Touched bubble");
+            //Touched bubble
             IsExploded = true;
             moveTimer = MOVE_DELAY;
 
             BubbleScript bb = raycastHit2D.transform.GetComponent<BubbleScript>();
             if (bb != null) {
-                Debug.Log("Bubble exploded");
+                //Bubble exploded"
                 bb.Explode(); 
             }
-        }
-        else
-        {
-            Debug.Log("Not touched");
         }
     }
 
