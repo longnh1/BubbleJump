@@ -28,6 +28,7 @@ public class BubbleSpawner : MonoBehaviour
 	
 	public GameObject GetPooledObject()
 	{
+		// return the first available pooled object
 		for(int i = 0; i < poolSize; i++){
 			if(!pooledBubbles[i].activeInHierarchy){
 				return pooledBubbles[i];

@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c4b8cb25dbfe74f9945b130acaba8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 1
+  size: 0.1
+  targetSize: 1
   targetPosition: {x: 0, y: 0, z: 0}
   speed: 5
 --- !u!58 &-2905661151989430053

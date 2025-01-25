@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BubbleScript : MonoBehaviour
 {
-	public float size = 1;
+	public float size = 0.1f;
+	public float targetSize = 1;
 	public Vector3 targetPosition;
 	public float speed=1;
 	private Collider2D selfCollider;
@@ -29,16 +30,28 @@ public class BubbleScript : MonoBehaviour
 			if (col.collider!=selfCollider){
 				GameObject oth=col.collider.gameObject;
 				Debug.Log(oth.name);
+				// if we collide with another bubble, fuse parameters and deactivate the other bubble
 				if (oth.CompareTag("bubble")){
 					BubbleScript othBub = oth.GetComponent<BubbleScript>();
+					// position average
 					transform.position=(transform.position+oth.transform.position)/2;
+					//taget position average
 					targetPosition=(targetPosition+othBub.targetPosition)/2;
-					size = size+othBub.size;
-					othBub.size=1;
+					//size merging
+					targetSize = targetSize+othBub.targetSize;
+					size=size>othBub.size?size:othBub.size;
+					othBub.size=0.1f;
+					othBub.targetSize=1.0f;
 					oth.SetActive(false);
 				}
 			}
 		}
+		// increase the scale
+		if (size<targetSize){
+			size+=Time.deltaTime*3;
+			size=size>targetSize?targetSize:size;
+		}
+		// make the scale visible
 		transform.localScale=new Vector3(size,size,size);
 	}
 }
