@@ -44,7 +44,20 @@ public class LevelManager : MonoBehaviour
     //TODO: Check if the player has collected everything on the list
     public void CheckWin()
     {
+        if (requireItems.Count <= 0) { 
+            //WIN
+        }
+    }
 
+    public void RemoveRequiredItemFromDict(ItemType item)
+    {
+        if (requireItems.ContainsKey(item)) {
+            if (requireItems[item] > 0) { 
+                requireItems[item]--; 
+                if (requireItems[item] <= 0) 
+                    requireItems.Remove(item);
+            }
+        }
     }
     
     #endregion
