@@ -40,8 +40,10 @@ public class BubbleSpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		// spawn bubbles if mouse button is pressed
-		if (Input.GetMouseButtonDown(0)){
+        if (!LevelManager.Instance.IsLevelStart) return;
+
+        // spawn bubbles if mouse button is pressed
+        if (Input.GetMouseButtonDown(0)){
 			//Debug.Log("Pressed left-click.");
 			GameObject bubble = GetPooledObject();
 			if (bubble!=null){

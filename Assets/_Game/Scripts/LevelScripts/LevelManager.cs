@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
     #region Inspector Variables
 
@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
     #region Properties
 
     public int levelID { get; private set; }
+    public bool IsLevelStart { get; private set; }
+
 
     #endregion
 
@@ -29,12 +31,13 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Connect(Events.CHECK_WIN_CONDITION, CheckWin);
+        EventManager.Connect(Events.START_GAME, ()=> { IsLevelStart = true; });
     }
 
     private void OnDisable()
     {
         EventManager.Disconnect(Events.CHECK_WIN_CONDITION, CheckWin);
-
+        EventManager.Disconnect(Events.START_GAME, () => { IsLevelStart = true; });
     }
 
     #endregion
@@ -46,6 +49,10 @@ public class LevelManager : MonoBehaviour
     {
         if (requireItems.Count <= 0) { 
             //WIN
+            IsLevelStart = false;
+
+            UIManager.Instance.HideCanvas(UIID.GamePlayCanvas);
+            UIManager.Instance.ShowCanvas(UIID.WinCanvas);
         }
     }
 

@@ -26,6 +26,8 @@ public class BubbleScript : MonoBehaviour
 
     private void Update()
     {
+        if (!LevelManager.Instance.IsLevelStart) return;
+
         //move the bubble with an ease-out effect (janky)
         Vector3 diff = targetPosition - transform.position;
         float coef = speed * Time.deltaTime;
@@ -43,9 +45,11 @@ public class BubbleScript : MonoBehaviour
     }
 
     void FixedUpdate(){
-		
-		// checks collisions
-		RaycastHit2D[] cols = Physics2D.CircleCastAll(transform.position, size/2, Vector2.zero, 0, collidedLayer);
+
+        if (!LevelManager.Instance.IsLevelStart) return;
+
+        // checks collisions
+        RaycastHit2D[] cols = Physics2D.CircleCastAll(transform.position, size/2, Vector2.zero, 0, collidedLayer);
 		foreach (RaycastHit2D col in cols){
 			if (col.collider != selfCollider){
 				GameObject oth = col.collider.gameObject;

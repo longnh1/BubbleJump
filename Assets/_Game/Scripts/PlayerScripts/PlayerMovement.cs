@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!LevelManager.Instance.IsLevelStart) return;
+
         /*Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
         Debug.Log(inputVector);*/
 
