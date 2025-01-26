@@ -40,6 +40,10 @@ public class LevelManager : Singleton<LevelManager>
         EventManager.Disconnect(Events.START_GAME, () => { IsLevelStart = true; });
     }
 
+    private void Start()
+    {
+        LoadLevelData();
+    }
     #endregion
 
     #region Public Methods
@@ -63,6 +67,9 @@ public class LevelManager : Singleton<LevelManager>
                 requireItems[item]--; 
                 if (requireItems[item] <= 0) 
                     requireItems.Remove(item);
+
+                GamePlayCanvas gpc = (GamePlayCanvas) UIManager.Instance.GetCanvasByID(UIID.GamePlayCanvas);
+                gpc.CheckItemByType(item);
             }
         }
     }

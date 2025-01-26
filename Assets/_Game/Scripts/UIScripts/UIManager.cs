@@ -30,6 +30,18 @@ public class UIManager : Singleton<UIManager>
         HideAllCanvas();
     }
 
+    public UICanvas GetCanvasByID(UIID ID)
+    {
+        foreach(var item in uiCanvas)
+        {
+            if (item.UIID == ID) { 
+                return item;
+            }
+        }
+        return null;
+    }
+
+
     public void ShowCanvas(UIID id)
     {
         if (uiCanvasDict.ContainsKey(id))

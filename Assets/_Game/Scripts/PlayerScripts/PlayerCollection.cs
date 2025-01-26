@@ -6,7 +6,7 @@ public class PlayerCollection : MonoBehaviour
 {
     #region Inspector Variables
 
-    private LevelManager levelManager;
+    [SerializeField] private LevelManager levelManager;
 
     #endregion
 
@@ -24,7 +24,7 @@ public class PlayerCollection : MonoBehaviour
 
     public void CollectionItem(ItemBase item)
     {
-        //levelManager.RemoveRequiredItemFromDict(item.type);
+        levelManager.RemoveRequiredItemFromDict(item.type);
     }
 
     private void RemoveItemFromCollection(ItemBase item) { 
