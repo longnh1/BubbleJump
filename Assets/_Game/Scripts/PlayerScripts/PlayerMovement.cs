@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private PlayerCollection playerCollection;
 
+    [SerializeField] private AudioSource jumpSource;
+    [SerializeField] private AudioSource walkSource;
+
     public bool IsExploded { get; set; }
     public bool IsMoving { get; private set; }
         
@@ -80,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
                 jumpTimer = JUMP_DELAY;
+                jumpSource.Play();
             }
         }
 
@@ -146,6 +150,15 @@ public class PlayerMovement : MonoBehaviour
         if (input != 0) IsMoving = true;
         else IsMoving = false;
         rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(input * moveSpeed, rb.velocity.y), 10 * Time.deltaTime);
+        if ((rb.velocity.x>0.1 || rb.velocity.x<-0.1)&&IsGrounded()){
+            walkSource.loop=true;
+            if (!walkSource.isPlaying){
+                walkSource.Play();
+            }
+        }else{
+            walkSource.loop=false;
+            walkSource.Stop();
+        }
     }
     #endregion
 
