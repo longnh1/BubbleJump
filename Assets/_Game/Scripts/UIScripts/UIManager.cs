@@ -13,7 +13,9 @@ public enum UIID
 public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private List<UICanvas> uiCanvas;
-
+    [SerializeField] private AudioClip winSong;
+    [SerializeField] private AudioClip menuSong;
+    [SerializeField] private AudioClip gameSong;
     private Dictionary<UIID, UICanvas> uiCanvasDict = new ();
 
     void Awake()
@@ -30,6 +32,22 @@ public class UIManager : Singleton<UIManager>
 
     public void ShowCanvas(UIID id)
     {
+    	AudioSource auSo = GetComponent<AudioSource>();
+        if (id==UIID.GamePlayCanvas){
+            auSo.Stop();
+	    auSo.clip=gameSong;
+	    auSo.Play();
+        }else if(id==UIID.WinCanvas){
+            auSo.Stop();
+            auSo.clip=winSong;
+            auSo.Play();
+        }else{
+            if (auSo.clip!=menuSong){
+            	auSo.Stop();
+                auSo.clip=menuSong;
+                auSo.Play();
+            }
+        }
         if (uiCanvasDict.ContainsKey(id))
         {
             uiCanvasDict[id].Show();
