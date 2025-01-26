@@ -126,7 +126,7 @@ public class BubbleScript : MonoBehaviour
 				{
 					float explosionForce = (size * size * 200) / distanceVector.magnitude;
 
-					Debug.Log(distanceVector.normalized);
+					//Debug.Log(distanceVector.normalized);
 					rb.AddForce(distanceVector.normalized * explosionForce);
 				}
 			}
@@ -137,6 +137,7 @@ public class BubbleScript : MonoBehaviour
 
 	public void DeactiveBubble()
 	{
+		PopItemInside();
         size = 0.1f;
 		targetSize = 1.0f;
 		transform.localScale = Vector3.one * size;

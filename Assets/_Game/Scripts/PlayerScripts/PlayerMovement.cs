@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerCollection playerCollection;
 
     public bool IsExploded { get; set; }
+    public bool IsMoving { get; private set; }
         
 
     #endregion
@@ -53,19 +54,20 @@ public class PlayerMovement : MonoBehaviour
 
         IsTouchedBubble();
 
+        float inputX = Input.GetAxis("Horizontal");
+
         if (IsExploded)
         {
             moveTimer -= Time.deltaTime;
             if (moveTimer <= 0) {
                 //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
-
-                rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y), 10* Time.deltaTime);
+                Move(inputX);
             }
         } 
         else
         {
             //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
-            rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y), 10 * Time.deltaTime);
+            Move(inputX);
         }
 
         //Flip player sprite
@@ -87,12 +89,6 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Public Methods
-
-    public bool IsMoving()
-    {
-        return rb.velocity != Vector2.zero;
-    }
-
     public float GetPlayerDirection()
     {
         return rb.velocity.x;
@@ -151,6 +147,12 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit2D.collider != null;
     }
 
+    private void Move(float input)
+    {
+        if (input != 0) IsMoving = true;
+        else IsMoving = false;
+        rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(input * moveSpeed, rb.velocity.y), 10 * Time.deltaTime);
+    }
     #endregion
 
 }
