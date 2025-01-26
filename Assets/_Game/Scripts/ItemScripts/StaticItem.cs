@@ -25,8 +25,9 @@ public class StaticItem : ItemBase
 		}
 	}
 
-	public void Update()
+	public override void Update()
 	{
+		base.Update();
 		if (transform.parent != null)
 		{
 			if (Vector2.Distance(trans.localPosition, Vector2.zero) > 0.01f)

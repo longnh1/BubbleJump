@@ -31,4 +31,12 @@ public class ItemBase : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public virtual void Update()
+    {
+        Vector3 parscale = transform.parent.localScale;
+        parscale.x = 1f / parscale.x;
+        parscale.y = 1f / parscale.y;
+        transform.localScale = parscale;
+    }
 }
