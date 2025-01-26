@@ -7,19 +7,17 @@ public class StaticItem : ItemBase
 	[SerializeField] private Rigidbody2D rb;
 	[SerializeField] private Collider2D col;
 
-	public void Start()
-	{
-		transform.parent = null;
-	}
-	
 	public void OnCollisionEnter2D(Collision2D oth){
 		GameObject other = (oth.collider == col) ?
 			oth.otherCollider.gameObject : oth.collider.gameObject;
 
 		if (other.CompareTag(Constant.BUBBLE_TAG))
 		{
+			BubbleScript container = other.GetComponent<BubbleScript>();
+			SetParent(container);
+			container.SetItem(this);
 			Bubblify();
-			transform.parent = other.gameObject.transform;
+			
 		}
 		else if(other.CompareTag(Constant.PLAYER_TAG))
 		{
@@ -31,7 +29,10 @@ public class StaticItem : ItemBase
 	{
 		if (transform.parent != null)
 		{
-			transform.localPosition /= 2;
+			if (Vector2.Distance(trans.localPosition, Vector2.zero) > 0.01f)
+			{
+                transform.localPosition /= 2;
+            }
 		}
 	}
 
@@ -45,15 +46,20 @@ public class StaticItem : ItemBase
     {
         rb.simulated = true;
         col.isTrigger = false;
-        trans.parent = null;
-		trans.localScale = Vector3.one;
+		SetParent();
     }
 
-	public void SetParent(Transform parent = null)
+	public override void SetParent(BubbleScript parent = null)
 	{
 		if (parent == null)
 		{
-
-		}
-	}
+            trans.parent = null;
+            trans.localScale = Vector3.one;
+        }
+        else
+        {
+            trans.SetParent(parent.transform);
+			bubbleContainer = parent;
+        }
+    }
 }

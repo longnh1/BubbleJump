@@ -25,9 +25,10 @@ public class BubbleScript : MonoBehaviour
 	void Start(){
 		//retrieve self collider
 		selfCollider=GetComponent<Collider2D>();
-	}
+        transform.localScale = Vector3.one * size;
+    }
 
-	private void Update()
+    private void Update()
 	{
         if (!LevelManager.Instance.IsLevelStart) return;
 
@@ -77,7 +78,8 @@ public class BubbleScript : MonoBehaviour
 				}
 				else
 				{
-					if (oth.CompareTag(Constant.GROUND_TAG)){
+					if (oth.CompareTag(Constant.GROUND_TAG))
+					{
 						Pop();
 					}
 				}
@@ -87,8 +89,6 @@ public class BubbleScript : MonoBehaviour
 	}
 
 	public void Pop(){
-		Debug.Log("Popped!");
-
 		PopItemInside();
         ShockWave sw;
 		sw.origin=transform.position;
@@ -137,17 +137,15 @@ public class BubbleScript : MonoBehaviour
 
 	public void DeactiveBubble()
 	{
-		PopItemInside();
-
         size = 0.1f;
 		targetSize = 1.0f;
-		gameObject.SetActive(false);
 		transform.localScale = Vector3.one * size;
+		gameObject.SetActive(false);
 	}
 
-	public void SetItem(ItemBase item)
+	public void SetItem(ItemBase item = null)
 	{
-		if (TrappedItem == null) TrappedItem = item;
+		TrappedItem = item;
 	}
 
 	public bool HasItemInside()
