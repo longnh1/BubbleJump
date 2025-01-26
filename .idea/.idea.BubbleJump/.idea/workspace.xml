@@ -4,11 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc586c8-b2c2-48b9-9f38-a51d39dce360" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/GUI PRO Kit - Casual Game/ResourcesData/Fonts/LilitaOne-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI PRO Kit - Casual Game/ResourcesData/Fonts/LilitaOne-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+    <list default="true" id="dcc586c8-b2c2-48b9-9f38-a51d39dce360" name="Changes" comment="added background and a little level">
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0001.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0001.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0002.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0002.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0003.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0003.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0004.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0004.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0005.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0005.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0006.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0006.PNG.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/_Scenes/Background.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Game/_Scenes/Background.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BubbleJump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BubbleJump/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player/PlayerVisual.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player/PlayerVisual.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player/idle.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player/idle.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Prefabs/MapObjects/Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Prefabs/MapObjects/Platform.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ScreenScripts/MenuButtons.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ScreenScripts/MenuButtons.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Game/_Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/_Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +39,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -31,8 +54,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/dragg/Documents/Game development/BubbleJump/Assets/GUI PRO Kit - Casual Game/ResourcesData/Fonts/LilitaOne-Regular SDF.asset" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/dragg/Documents/Game development/BubbleJump/Assets/_Game/Scripts/PlayerScripts/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/dragg/Documents/Game development/BubbleJump/Assets/_Game/Prefabs/MapObjects/Platform.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/GraphicRaycaster.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -118,8 +140,31 @@
       <workItem from="1737814279469" duration="4663000" />
       <workItem from="1737819446226" duration="2264000" />
       <workItem from="1737832158549" duration="2733000" />
-      <workItem from="1737835978511" duration="913000" />
+      <workItem from="1737835978511" duration="1264000" />
+      <workItem from="1737863889480" duration="5580000" />
+      <workItem from="1737869622303" duration="2327000" />
+      <workItem from="1737872010167" duration="171000" />
+      <workItem from="1737872189972" duration="632000" />
+      <workItem from="1737872914096" duration="1042000" />
+      <workItem from="1737874267510" duration="51000" />
+      <workItem from="1737874443687" duration="22000" />
+      <workItem from="1737874517632" duration="1000" />
+      <workItem from="1737874671616" duration="24000" />
+      <workItem from="1737875370377" duration="75000" />
+      <workItem from="1737875500839" duration="56000" />
+      <workItem from="1737875594945" duration="43000" />
+      <workItem from="1737879342387" duration="1822000" />
+      <workItem from="1737884251295" duration="357000" />
     </task>
+    <task id="LOCAL-00001" summary="added animation to player">
+      <option name="closed" value="true" />
+      <created>1737837197708</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737837197708</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,5 +191,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="added animation to player" />
+    <MESSAGE value="added background and a little level" />
+    <option name="LAST_COMMIT_MESSAGE" value="added background and a little level" />
   </component>
 </project>
