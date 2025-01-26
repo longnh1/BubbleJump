@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -103,36 +104,41 @@ public class PlayerMovement : MonoBehaviour
 
     private void IsTouchedBubble()
     {
-        RaycastHit2D raycastHit2D = Physics2D.CapsuleCast(transform.position + Vector3.up * -0.13f, new Vector2(.5f, .75f),
+        RaycastHit2D[] raycastHit2Ds = Physics2D.CapsuleCastAll(transform.position + Vector3.up * -0.13f, new Vector2(.5f, .75f),
             CapsuleDirection2D.Vertical, 0, Vector2.zero, 0.0f, bubbleLayer);
-
-        if (raycastHit2D.collider != null)
+        
+        if (raycastHit2Ds != null)
         {
-            BubbleScript bb = raycastHit2D.transform.GetComponent<BubbleScript>();
-            if (bb != null)
-            {
-                if (bb.HasItemInside())
+            foreach (RaycastHit2D raycastHit2D in raycastHit2Ds) {
+                if (raycastHit2D.transform.GetComponent<BubbleScript>())
                 {
-                    ItemBase item = bb.TrappedItem;
+                    BubbleScript bb = raycastHit2D.transform.GetComponent<BubbleScript>();
+                    if (bb != null)
+                    {
+                        if (bb.HasItemInside())
+                        {
+                            ItemBase item = bb.TrappedItem;
 
-                    //Collect => Add to player collection
-                    playerCollection.CollectionItem(item);
+                            //Collect => Add to player collection
+                            playerCollection.CollectionItem(item);
 
-                    //Deactive bubble
-                    //Reset item
-                    item.SetParent();
-                    item.DeactiveItem();
+                            //Deactive bubble
+                            //Reset item
+                            item.SetParent();
+                            item.DeactiveItem();
 
-                    bb.SetItem();
-                    bb.DeactiveBubble();
-                }
-                else
-                {
-                    //Bubble exploded"
-                    bb.Explode();
-                    //Touched bubble
-                    IsExploded = true;
-                    moveTimer = MOVE_DELAY;
+                            bb.SetItem();
+                            bb.DeactiveBubble();
+                        }
+                        else
+                        {
+                            //Bubble exploded"
+                            bb.Explode();
+                            //Touched bubble
+                            IsExploded = true;
+                            moveTimer = MOVE_DELAY;
+                        }
+                    }
                 }
             }
         }
