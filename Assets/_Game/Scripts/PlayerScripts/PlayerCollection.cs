@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerCollection : MonoBehaviour
 {
+    #region Inspector Variables
+
+    private LevelManager levelManager;
+
+    #endregion
+
     #region Member Variables
 
     public List<ItemBase> ItemCollections {  get; private set; }
@@ -16,9 +22,9 @@ public class PlayerCollection : MonoBehaviour
 
     #region Private Methods
 
-    private void AddItemToCollection(ItemBase item)
+    public void CollectionItem(ItemBase item)
     {
-        ItemCollections.Add(item);
+        //levelManager.RemoveRequiredItemFromDict(item.type);
     }
 
     private void RemoveItemFromCollection(ItemBase item) { 

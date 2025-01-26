@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour
 {
-    public Sprite itemSprite;
-    public LayerMask interactLayer;
+	public SpriteRenderer itemSprite;
+	public LayerMask interactLayer;
 
-    public virtual void StartFollowingPlayer(){
+	public Transform trans;
 
+	public BubbleScript bubbleContainer;
+
+	//Inside the bubble
+	public virtual void Bubblify() { }
+	
+	public virtual void Pop() { }
+
+    public virtual void SetParent(BubbleScript parent = null)
+    {
+        if (parent == null)
+        {
+            trans.parent = null;
+            trans.localScale = Vector3.one;
+        }
     }
 
-    public virtual void Bubblify(){
-
-    }
-    
-    public virtual void Pop(){
-    	
+    //TODO: SHOULD BE USING OBJECT POOLING
+    //Push it back to the Pool
+    public void DeactiveItem()
+    {
+        gameObject.SetActive(false);
     }
 }

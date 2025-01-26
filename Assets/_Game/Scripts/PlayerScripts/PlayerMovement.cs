@@ -17,7 +17,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask collidedLayer;
     [SerializeField] private LayerMask bubbleLayer;
 
+    [SerializeField] private PlayerCollection playerCollection;
+
     public bool IsExploded { get; set; }
+        
 
     #endregion
 
@@ -38,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!LevelManager.Instance.IsLevelStart) return;
+
         /*Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
         Debug.Log(inputVector);*/
 
@@ -62,8 +67,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y), 10 * Time.deltaTime);
         }
 
-
-
         //Flip player sprite
         //if (IsMoving) playerSprite.flipX = moveDir.x < 0;
 
@@ -82,23 +85,55 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    #region Public Methods
+
+    public bool IsMoving()
+    {
+        return rb.velocity != Vector2.zero;
+    }
+
+    public float GetPlayerDirection()
+    {
+        return rb.velocity.x;
+    }
+
+    #endregion
+
     #region Private Methods
 
     private void IsTouchedBubble()
     {
-        RaycastHit2D raycastHit2D = Physics2D.CapsuleCast(transform.position, new Vector2(.5f, 1f),
+        RaycastHit2D raycastHit2D = Physics2D.CapsuleCast(transform.position + Vector3.up * -0.13f, new Vector2(.5f, .75f),
             CapsuleDirection2D.Vertical, 0, Vector2.zero, 0.0f, bubbleLayer);
 
         if (raycastHit2D.collider != null)
         {
-            //Touched bubble
-            IsExploded = true;
-            moveTimer = MOVE_DELAY;
-
             BubbleScript bb = raycastHit2D.transform.GetComponent<BubbleScript>();
-            if (bb != null) {
-                //Bubble exploded"
-                bb.Explode(); 
+            if (bb != null)
+            {
+                if (bb.HasItemInside())
+                {
+                    ItemBase item = bb.TrappedItem;
+
+                    //Collect => Add to player collection
+                    playerCollection.CollectionItem(item);
+
+                    //Deactive bubble
+                    //Reset item
+                    item.SetParent();
+                    item.DeactiveItem();
+
+                    bb.SetItem();
+                    bb.DeactiveBubble();
+                }
+                else
+                {
+                    //Bubble exploded"
+                    bb.Explode();
+                    //Touched bubble
+                    IsExploded = true;
+                    moveTimer = MOVE_DELAY;
+                }
             }
         }
     }
