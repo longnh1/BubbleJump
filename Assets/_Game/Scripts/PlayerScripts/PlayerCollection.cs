@@ -22,7 +22,7 @@ public class PlayerCollection : MonoBehaviour
 
     #region Private Methods
 
-    private void CollectionItem(ItemBase item)
+    public void CollectionItem(ItemBase item)
     {
         //levelManager.RemoveRequiredItemFromDict(item.type);
     }
