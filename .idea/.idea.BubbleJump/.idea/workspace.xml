@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc586c8-b2c2-48b9-9f38-a51d39dce360" name="Changes" comment="added background and a little level">
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0001.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0001.PNG.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0002.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0002.PNG.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0003.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0003.PNG.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0004.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0004.PNG.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0005.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0005.PNG.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0006.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/Textures/Background/Background0006.PNG.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/_Scenes/Background.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Game/_Scenes/Background.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BubbleJump/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BubbleJump/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player/PlayerVisual.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player/PlayerVisual.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player/idle.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Animation/Player/idle.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Prefabs/MapObjects/Platform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/Prefabs/MapObjects/Platform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ScreenScripts/MenuButtons.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/Scripts/ScreenScripts/MenuButtons.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Game/_Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Game/_Scenes/Gameplay.unity" afterDir="false" />
-    </list>
+    <list default="true" id="dcc586c8-b2c2-48b9-9f38-a51d39dce360" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +28,9 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/dragg/Documents/Game development/BubbleJump/Assets/_Game/Prefabs/MapObjects/Platform.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/dragg/Documents/Game development/BubbleJump/Assets/_Game/Prefabs/MapObjects/Platform.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/dragg/Documents/Game development/BubbleJump/Assets/_Game/_Scenes/Gameplay.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/dragg/Documents/Game development/BubbleJump/Assets/_Game/_Scenes/Gameplay.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/GraphicRaycaster.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -154,7 +130,7 @@
       <workItem from="1737875500839" duration="56000" />
       <workItem from="1737875594945" duration="43000" />
       <workItem from="1737879342387" duration="1822000" />
-      <workItem from="1737884251295" duration="357000" />
+      <workItem from="1737884251295" duration="432000" />
     </task>
     <task id="LOCAL-00001" summary="added animation to player">
       <option name="closed" value="true" />
@@ -164,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737837197708</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added background and a little level">
+      <option name="closed" value="true" />
+      <created>1737884626181</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1737884626181</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
