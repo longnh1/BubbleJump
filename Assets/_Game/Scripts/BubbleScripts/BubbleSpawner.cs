@@ -9,6 +9,8 @@ public class BubbleSpawner : MonoBehaviour
 	public static BubbleSpawner BubbleBath;
 	public List<GameObject> pooledBubbles;
 	public int poolSize;
+	[SerializeField] private AudioSource popSound;
+	[SerializeField] private AudioSource blowSound;
 	void Awake(){
 		//set this script as a bubble pool
 		BubbleBath = this;
@@ -54,6 +56,7 @@ public class BubbleSpawner : MonoBehaviour
 				bubble.GetComponent<BubbleScript>().targetPosition=mousePos;
 				bubble.SetActive(true);
 			}
+			blowSound.Play();
 		}
 		
 		// shoot the bubbles if mouse right click
@@ -62,6 +65,7 @@ public class BubbleSpawner : MonoBehaviour
 			GameObject oth=hit.collider.gameObject;
 			if (oth.CompareTag("bubble")){
 				oth.GetComponent<BubbleScript>().Pop();
+				popSound.Play();
 			}
 		}
 	}
