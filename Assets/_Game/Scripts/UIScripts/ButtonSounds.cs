@@ -13,12 +13,10 @@ public class ButtonSounds : MonoBehaviour
         Button[] buttons = GameObject.FindObjectsOfType<Button>(true); // parameter makes it include inactive UI elements with buttons
         foreach (Button b in buttons){
             b.onClick.AddListener(ButtonSound);
-            print(b.name);
         }
     }
     public void ButtonSound()
     {
-        print("clicked");
         menuSound.Play();
     }
 }

@@ -34,6 +34,8 @@ public class ItemBase : MonoBehaviour
 
     public virtual void Update()
     {
+        if (trans.parent == null) return;
+
         Vector3 parscale = transform.parent.localScale;
         parscale.x = 1f / parscale.x;
         parscale.y = 1f / parscale.y;

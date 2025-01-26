@@ -45,19 +45,10 @@ public class BubbleSpawner : MonoBehaviour
         if (!LevelManager.Instance.IsLevelStart) return;
 
         // spawn bubbles if mouse button is pressed
-        if (Input.GetMouseButtonDown(0)){
+        /*if (Input.GetMouseButtonDown(0)){
 			//Debug.Log("Pressed left-click.");
-			GameObject bubble = GetPooledObject();
-			if (bubble!=null){
-				//Debug.Log("spawned Bubble");
-				bubble.transform.position=player.position;
-				Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				mousePos.z=10;
-				bubble.GetComponent<BubbleScript>().targetPosition=mousePos;
-				bubble.SetActive(true);
-			}
-			blowSound.Play();
-		}
+			SpawnBubble();
+        }*/
 		
 		// shoot the bubbles if mouse right click
 		if (Input.GetMouseButtonDown(1)){
@@ -69,4 +60,19 @@ public class BubbleSpawner : MonoBehaviour
 			}
 		}
 	}
+
+	public void SpawnBubble()
+	{
+        GameObject bubble = GetPooledObject();
+        if (bubble != null)
+        {
+            //Debug.Log("spawned Bubble");
+            bubble.transform.position = player.position;
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 10;
+            bubble.GetComponent<BubbleScript>().targetPosition = mousePos;
+            bubble.SetActive(true);
+        }
+        blowSound.Play();
+    }
 }
