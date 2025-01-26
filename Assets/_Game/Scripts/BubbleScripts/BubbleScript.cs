@@ -12,12 +12,15 @@ public class BubbleScript : MonoBehaviour
 	[SerializeField] private float size = 0.1f;
 	[SerializeField] private float speed=1;
 	
-	public float targetSize = 1;
-	public Vector3 targetPosition;
 
 	[SerializeField] private LayerMask collidedLayer;
 
+	public float targetSize = 1;
+	public Vector3 targetPosition;
+
 	private Collider2D selfCollider;
+
+	public ItemBase TrappedItem { get; private set; }
 
 	void Start(){
 		//retrieve self collider
@@ -26,8 +29,10 @@ public class BubbleScript : MonoBehaviour
 
 	private void Update()
 	{
-		//move the bubble with an ease-out effect (janky)
-		Vector3 diff = targetPosition - transform.position;
+        if (!LevelManager.Instance.IsLevelStart) return;
+
+        //move the bubble with an ease-out effect (janky)
+        Vector3 diff = targetPosition - transform.position;
 		float coef = speed * Time.deltaTime;
 		//do not go farther than the target pos
 		coef = coef > 1 ? 1 : coef;
@@ -43,9 +48,11 @@ public class BubbleScript : MonoBehaviour
 	}
 
 	void FixedUpdate(){
-		
-		// checks collisions
-		RaycastHit2D[] cols = Physics2D.CircleCastAll(transform.position, size/2, Vector2.zero, 0, collidedLayer);
+
+        if (!LevelManager.Instance.IsLevelStart) return;
+
+        // checks collisions
+        RaycastHit2D[] cols = Physics2D.CircleCastAll(transform.position, size/2, Vector2.zero, 0, collidedLayer);
 		foreach (RaycastHit2D col in cols){
 			if (col.collider != selfCollider){
 				GameObject oth = col.collider.gameObject;
@@ -59,10 +66,12 @@ public class BubbleScript : MonoBehaviour
 					//taget position average
 					targetPosition = (targetPosition+othBub.targetPosition)/2;
 					//size merging
-					targetSize = targetSize+othBub.targetSize;
-					size=size>othBub.size?size:othBub.size;
+					targetSize = targetSize + othBub.targetSize;
+					size = size>othBub.size? size : othBub.size;
 					othBub.DeactiveBubble();
-					if (GetComponentsInChildren(typeof(ItemBase)).Length>=1){
+
+					if (HasItemInside())
+					{
 						Pop();
 					}
 				}
@@ -79,11 +88,9 @@ public class BubbleScript : MonoBehaviour
 
 	public void Pop(){
 		Debug.Log("Popped!");
-		Component[] items = GetComponentsInChildren(typeof(ItemBase));
-		foreach (ItemBase item in items){
-			item.Pop();
-		}
-		ShockWave sw;
+
+		PopItemInside();
+        ShockWave sw;
 		sw.origin=transform.position;
 		sw.size=size;
 		transform.parent.gameObject.BroadcastMessage(nameof(ApplyShockWave), sw );
@@ -130,13 +137,38 @@ public class BubbleScript : MonoBehaviour
 
 	public void DeactiveBubble()
 	{
-		Component[] items = GetComponentsInChildren(typeof(ItemBase));
-		foreach (ItemBase item in items){
-			item.Pop();
-		}
-		size = 0.1f;
+		PopItemInside();
+
+        size = 0.1f;
 		targetSize = 1.0f;
 		gameObject.SetActive(false);
 		transform.localScale = Vector3.one * size;
 	}
+
+	public void SetItem(ItemBase item)
+	{
+		if (TrappedItem == null) TrappedItem = item;
+	}
+
+	public bool HasItemInside()
+	{
+		return TrappedItem != null;
+	}
+
+	private void PopItemInside()
+	{
+        if (HasItemInside())
+        {
+            if (TrappedItem is StaticItem)
+            {
+                StaticItem si = (StaticItem)TrappedItem;
+                si.Pop();
+            }
+            else //Special Item
+            {
+
+            }
+        }
+		SetItem(null);
+    }
 }
