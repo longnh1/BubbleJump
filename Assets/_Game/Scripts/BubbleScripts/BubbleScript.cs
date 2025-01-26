@@ -11,8 +11,9 @@ public class BubbleScript : MonoBehaviour
 {
 	[SerializeField] private float size = 0.1f;
 	[SerializeField] private float speed=1;
-	
-
+	[SerializeField] private AudioClip popSound;
+	[SerializeField] private AudioClip mergeSound;
+	[SerializeField] private AudioClip swallowSound;
 	[SerializeField] private LayerMask collidedLayer;
 
 	public float targetSize = 1;
@@ -70,11 +71,16 @@ public class BubbleScript : MonoBehaviour
 					targetSize = targetSize + othBub.targetSize;
 					size = size>othBub.size? size : othBub.size;
 					othBub.DeactiveBubble();
-
+					
+					//play merge sound
+					GetComponent<AudioSource>().clip=mergeSound;
+					GetComponent<AudioSource>().Play();
+		
 					if (HasItemInside())
 					{
 						Pop();
 					}
+					
 				}
 				else
 				{
@@ -89,6 +95,8 @@ public class BubbleScript : MonoBehaviour
 	}
 
 	public void Pop(){
+		GetComponent<AudioSource>().clip=popSound;
+		GetComponent<AudioSource>().Play();
 		PopItemInside();
         ShockWave sw;
 		sw.origin=transform.position;
@@ -147,6 +155,8 @@ public class BubbleScript : MonoBehaviour
 	public void SetItem(ItemBase item = null)
 	{
 		TrappedItem = item;
+		GetComponent<AudioSource>().clip=swallowSound;
+		GetComponent<AudioSource>().Play();
 	}
 
 	public bool HasItemInside()
