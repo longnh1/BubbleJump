@@ -6,7 +6,7 @@ public class ItemBase : MonoBehaviour
 {
 	public SpriteRenderer itemSprite;
 	public LayerMask interactLayer;
-
+    public ItemType type;
 	public Transform trans;
 
 	public BubbleScript bubbleContainer;
