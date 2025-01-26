@@ -32,6 +32,14 @@ public class UIManager : Singleton<UIManager>
 
     public void ShowCanvas(UIID id)
     {
+        if (uiCanvasDict.ContainsKey(id))
+        {
+            uiCanvasDict[id].Show();
+        }
+        PlayMenuMusic(id);
+    }
+    
+    public void PlayMenuMusic(UIID id){
     	AudioSource auSo = GetComponent<AudioSource>();
         if (id==UIID.GamePlayCanvas){
             auSo.Stop();
@@ -47,10 +55,6 @@ public class UIManager : Singleton<UIManager>
                 auSo.clip=menuSong;
                 auSo.Play();
             }
-        }
-        if (uiCanvasDict.ContainsKey(id))
-        {
-            uiCanvasDict[id].Show();
         }
     }
 
